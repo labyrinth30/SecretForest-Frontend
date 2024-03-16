@@ -1,0 +1,83 @@
+.main-header {
+  top: 0px;
+  z-index: 20;
+  display: flex;
+  height: 3.5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  --tw-bg-opacity: 1;
+  background-color: rgb(13 70 133 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.p-main-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.main-nav {
+  display: flex;
+  width: 20rem;
+  justify-content: center;
+}
+
+.main-menu-selected {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.main-menu {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  background-color: transparent;
+  border: none;
+}
+
+.main-menu-selected {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+
+.auth-box {
+  /* @apply  mt-5 mx-5 lg:max-w-xl flex flex-col */
+  margin-top: 1.25rem;
+  display: flex;
+  width: 100%;
+  justify-content: center
+}

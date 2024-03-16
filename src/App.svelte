@@ -1,8 +1,10 @@
 <script>
-
+  // @ts-ignore
+  import Router from './router.svelte';
 
 </script>
 
-<div>
-  App
+<div class="main-container">  
+    <Router />  
+
 </div>
