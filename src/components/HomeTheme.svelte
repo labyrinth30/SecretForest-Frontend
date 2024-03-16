@@ -1,11 +1,11 @@
 <script>
     let currId = 0;
     const images = [
-  '/src/assets/어비스.jpg',
-  '/src/assets/오버킬.jpg',
-  '/src/assets/리플레이.jpg',
-  '/src/assets/드림레일.jpg',
-  '/src/assets/베스트셀러.jpg',
+  '../../../public/images/어비스.jpg',
+  '../../../public/images/오버킬.jpg',
+  '../../../public/images/리플레이.jpg',
+  '../../../public/images/드림레일.jpg',
+  '../../../public/images/베스트셀러.jpg',
 ];
     const imgLen = images.length;
     let positionLeft = 0;
