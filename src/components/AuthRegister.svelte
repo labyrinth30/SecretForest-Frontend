@@ -1,5 +1,6 @@
 <script>
 	import { registerValidate, extractErrors } from '../utils/validates' 
+  import { auth } from '../stores';
 
   let errors = {}
 
@@ -7,18 +8,19 @@
     formEmail: '',
     formPassword: '',
     formPasswordConfirm: '',
-  }
+  };
 
   const onRegister = async () => {
     try {
-      await registerValidate.validate(values, {abortEarly: false})      
+      await auth.register(values.formEmail, values.formPassword);
+      await registerValidate.validate(values, {abortEarly: false});  
     } 
     catch(error) {
       // alert('회원가입에 실패했습니다. 다시 시도해 주세요.')
       errors = extractErrors(error);
-      if(errors.formEmail) alert(errors.formEmail)
-      if(errors.formPassword) alert(errors.formPassword)
-      if(errors.formPasswordConfirm) alert(errors.formPasswordConfirm)
+      if(errors.formEmail) alert(errors.formEmail);
+      if(errors.formPassword) alert(errors.formPassword);
+      if(errors.formPasswordConfirm) alert(errors.formPasswordConfirm);
     }
   }
 </script>

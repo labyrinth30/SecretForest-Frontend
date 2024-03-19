@@ -8,7 +8,7 @@ function setAuth(){
     email: '',
     Authorization: '', // access_token
   }
-  const { subscribe, set, update } = writable({...initValues});
+  const { subscribe, set } = writable({...initValues});
 
   const refresh = async () => {
     try {
