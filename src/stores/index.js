@@ -1,4 +1,4 @@
-import { writable, get } from "svelte/store";
+import { writable, get, derived } from "svelte/store";
 import { getApi, patchApi, postApi, delApi } from "../service/api";
 import { router } from "tinro";
 
@@ -81,5 +81,11 @@ function setAuth(){
   }
 }
 
+function setIsLogin(){
+  const checkIsLogin = derived(auth, $auth => $auth.Authorization ? true : false);
+  return checkIsLogin;
+}
+
 export const auth = setAuth();
+export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
