@@ -1,23 +1,29 @@
 <script>
-	import { router } from "tinro";
+	import { router, meta } from "tinro";
 	import { auth, isLogin } from "../stores";
+
+	const route = meta();
+	const url = $route.url;
 
 	const goLogin = () => router.goto("/login");
 	const onLogout = () => auth.logout();
+
+	const goTheme = () => router.goto("/theme");
+	const goHome = () => router.goto("/");
 </script>
 
 
 <header class="main-header">
-	<p class="p-main-title">비밀의숲</p>
+	<p class="p-main-title" on:click={goHome}>비밀의 숲</p>
 	<nav class="main-nav">
 		<button
 		class="main-menu mr-6"
-		on:click={() => {
-			console.log("1");
-		}}>THEME</button
+		class:main-menu-selected={url === '/theme'}
+		on:click={goTheme}>THEME</button
 	>
 		<button
 			class="main-menu mr-6"
+			class:main-menu-selected={url === '/reservation'}
 			on:click={() => {
 				console.log("1");
 			}}>RESERVATION</button

@@ -287,3 +287,9 @@
   padding-top: 0.75rem;
 }
 
+
+.img_box img {
+  max-width: 100%;
+  max-height: 200px;
+  height: auto;
+}

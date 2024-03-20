@@ -1,4 +1,5 @@
 <script>
+  import { router } from "tinro";
     let currId = 0;
     const images = [
   '/images/어비스.jpg',
@@ -37,28 +38,36 @@
       const stopPlay = () => {
           clearInterval(interval)
       }
-      const goTheme = () => {
-          console.log(1);
-      }
+      const goTheme = (event) => {
+      event.stopPropagation(); // 이벤트 전파 중지
+      router.goto('/theme');
+  };
+
+  const handleButtonClick = (event, action) => {
+      event.stopPropagation(); // 버튼 클릭 이벤트에서도 이벤트 전파 중지
+      action();
+  };
+
+      
   </script>
   
   <main>
 
-    <div on:mouseover={stopPlay} on:mouseleave={autoPlay} class="container">
-      <div class="slider" style="left: -{positionLeft}%;">
+    <div on:mouseover={stopPlay} on:mouseleave={autoPlay} class="container" on:click={goTheme}>
+      <div class="slider" style="left: -{positionLeft}%;" >
         {#each images as img}
-          <img src={img} alt="" />
+          <img src={img} alt=""/>
         {/each}
       </div>
       <div class="arrow">
-        <button on:click={prev} class="prev">Prev</button>
-        <button on:click={next} class="next">Next</button>
+        <button on:click={(event) => handleButtonClick(event, prev)} class="prev">Prev</button>
+        <button on:click={(event) => handleButtonClick(event, next)} class="next">Next</button>
       </div>
       <div class="papagination">
         {#each images as _, i}
           <button
             class={currId === i ? 'active' : ''}
-            on:click={() => getIndex(i)}
+            on:click={(event) => handleButtonClick(event, () => getIndex(i))}
           />
         {/each}
       </div>
