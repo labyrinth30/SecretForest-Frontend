@@ -54,13 +54,15 @@ function setAuth(){
     }
   };
 
-  const register = async (email, password) => {
+  const register = async (email, password, name, contact) => {
     try {
       const options = {
         path: '/auth/register',
         data: {
           email,
           password,
+          name,
+          contact,
         },
       }
       await postApi(options);
