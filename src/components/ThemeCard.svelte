@@ -43,6 +43,12 @@
     border-radius: 8px;
     overflow: hidden;
     margin: 20px;
+    transition: transform 0.2s ease, border 0.2s ease; 
+  }
+
+  .theme-card:hover {
+    transform: translateY(-10px); 
+    border: 5px solid #007bff; 
   }
 
   .theme-card .image-container img {
