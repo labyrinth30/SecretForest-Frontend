@@ -1,5 +1,6 @@
 <script>
-  import { loginValidate, extractErrors } from '../utils/validates'
+  import { loginValidate, extractErrors } from '../utils/validates';
+  import { auth } from '../stores';
 
   let errors = {}
 
@@ -15,13 +16,15 @@
 
 	const onLogin = async () => {
     try {
-      await loginValidate.validate(values, {abortEarly: false})
-      resetValues()
+      await auth.login(values.formEmail, values.formPassword);
+      await loginValidate.validate(values, {abortEarly: false});
+      resetValues();
     }
     catch(error) {
-      errors = extractErrors(error)
-      if(errors.formEmail) alert(errors.formEmail)
-      if(errors.formPassword) alert(errors.formPassword)
+      alert('로그인에 실패하였습니다. 다시 시도해주세요');
+      errors = extractErrors(error);
+      if(errors.formEmail) alert(errors.formEmail);
+      if(errors.formPassword) alert(errors.formPassword);
     }
   }
 
