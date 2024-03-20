@@ -6,7 +6,7 @@
   '/images/리플레이.jpg',
   '/images/드림레일.jpg',
   '/images/베스트셀러.jpg',
-];
+  ];
     const imgLen = images.length;
     let positionLeft = 0;
   

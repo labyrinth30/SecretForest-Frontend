@@ -30,6 +30,7 @@
 	  <button
 		class="main-menu mr-6"
 		on:click={onLogout}>로그아웃</button
+
 	>
 	{:else}
 		<!--로그인 -->
