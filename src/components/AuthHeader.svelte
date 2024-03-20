@@ -10,7 +10,7 @@
 </script>
 
 <header class="main-header">
-  <button class="button-main-title" on:click={goHome}>비밀의숲 </button>
+	<p class="p-main-title" on:click={goHome}>비밀의 숲</p>
   <nav class="main-nav">
 		<!--로그인 -->
 		<button class="main-menu mr-6" class:main-menu-selected={url === '/login'} on:click={goLogin}>로그인</button> 

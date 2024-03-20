@@ -3,9 +3,11 @@
     import Home from './pages/Home.svelte';
     import Login from './pages/Login.svelte';
     import Register from './pages/Register.svelte';
+    import Theme from './pages/Theme.svelte';
 </script>
 
 <Route path="/"><Home /></Route>
 <Route path="/home"><Home /></Route>
 <Route path="/login"><Login /></Route>
 <Route path="/register"><Register /></Route>
+<Route path="/theme"><Theme /></Route>

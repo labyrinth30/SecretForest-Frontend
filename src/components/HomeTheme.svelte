@@ -1,4 +1,5 @@
 <script>
+  import { router } from "tinro";
     let currId = 0;
     const images = [
   '/images/어비스.jpg',
@@ -38,16 +39,16 @@
           clearInterval(interval)
       }
       const goTheme = () => {
-          console.log(1);
+          router.goto('/theme');
       }
   </script>
   
   <main>
 
     <div on:mouseover={stopPlay} on:mouseleave={autoPlay} class="container">
-      <div class="slider" style="left: -{positionLeft}%;">
+      <div class="slider" style="left: -{positionLeft}%;" >
         {#each images as img}
-          <img src={img} alt="" />
+          <img src={img} alt="" on:click={goTheme}/>
         {/each}
       </div>
       <div class="arrow">

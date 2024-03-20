@@ -88,6 +88,8 @@ function setIsLogin(){
   return checkIsLogin;
 }
 
+
+
 export const auth = setAuth();
 export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
