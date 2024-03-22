@@ -10,6 +10,7 @@
 
 	const goTheme = () => router.goto("/theme");
 	const goHome = () => router.goto("/");
+	const goReservation = () => router.goto("/reservation");
 </script>
 
 
@@ -24,9 +25,7 @@
 		<button
 			class="main-menu mr-6"
 			class:main-menu-selected={url === '/reservation'}
-			on:click={() => {
-				console.log("1");
-			}}>RESERVATION</button
+			on:click={goReservation}>RESERVATION</button
 		>
 	</nav>
 
