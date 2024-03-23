@@ -10,10 +10,7 @@
         <div class="progress-bar__item__text">02.예약정보 입력</div>
     </div>
     <div class="progress-bar__item" class:active={activeId === "3"}>
-        <div class="progress-bar__item__text">03.결제하기</div>
-    </div>
-    <div class="progress-bar__item" class:active={activeId === "4"}>
-        <div class="progress-bar__item__text">04.예약완료</div>
+        <div class="progress-bar__item__text">03.예약완료</div>
     </div>
 </div>
 

@@ -3,7 +3,7 @@
     import HomeHeader from "../components/HomeHeader.svelte";
     import ReservationForm from "../components/ReservationForm.svelte";
     import { get } from "svelte/store";
-    import { auth, date } from "../stores/index.js";
+    import { auth } from "../stores/index.js";
     import { postApi } from "../service/api.js";
 
     export let theme;
@@ -34,6 +34,6 @@
 <HomeHeader />
 <br />
 <ReservationProgressBar activeId="2" />
-  <!-- 예약 정보를 입력받는 Form이 위치할 자리  -->
+<br />
   <ReservationForm {handleSubmit} {theme} {timeNum}/>
 
