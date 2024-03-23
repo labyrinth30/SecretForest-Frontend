@@ -5,6 +5,7 @@
     import { get } from "svelte/store";
     import { auth } from "../stores/index.js";
     import { postApi } from "../service/api.js";
+    import { router } from "tinro";
 
     export let theme;
     export let timeNum;
@@ -26,6 +27,8 @@
 
             console.log('예약 성공', response);
         } catch (error) {
+            // 일단 서버와 연동하기 전에는 임시로 성공했다고 가정하고 라우팅
+            router.goto('/reservation')
             console.error('There has been a problem with your fetch operation:', error);
         }
     }

@@ -1,15 +1,8 @@
 <script>
   import { date } from "../stores";
   import { themes } from "../model/themes";
-  import { onMount } from 'svelte';
-  import { router } from 'tinro';
-  onMount(() => {
-    const themeTitle = findThemeTitleById(theme);
-    if (themeTitle === 'Unknown') {
-      alert('잘못된 접근입니다');
-      router.goto('/reservation');
-    }
-  });
+  import { onMount } from "svelte";
+  import { router } from "tinro";
 
   export let handleSubmit;
   export let theme;
@@ -23,24 +16,59 @@
     const theme = themes.find((theme) => theme.id === id);
     return theme ? theme.title : "Unknown";
   }
+
+  function findThemePriceById(id) {
+    const theme = themes.find((theme) => theme.id === id);
+    return theme ? theme.price : "Unknown";
+  }
+
+  let price;
+  $: currentPrice = price * personCount;
+
+  onMount(() => {
+    const themeTitle = findThemeTitleById(theme);
+    if (themeTitle === "Unknown") {
+      alert("잘못된 접근입니다");
+      router.goto("/reservation");
+    }
+    price = findThemePriceById(theme);
+  });
 </script>
 
 <form on:submit={handleSubmit}>
-  <h2>테마명: {findThemeTitleById(theme)}</h2>
-  <h2>예약일: {$date}</h2>
-  <h2>
-    예약시간:
-    {timeNum}
-  </h2>
-
+  <div class="form-item">
+    <label>테마명:</label>
+    <p>{findThemeTitleById(theme)}</p>
+  </div>
+  <div class="form-item">
+    <label>예약일:</label>
+    <p>{$date}</p>
+  </div>
+  <div class="form-item">
+    <label>예약시간:</label>
+    <p>{timeNum}</p>
+  </div>
   <div class="form-item">
     <label for="personCount">인원:</label>
     <select bind:value={personCount} id="personCount">
       {#each Array(MAX_PERSON) as _, i (i)}
-        <option value={i + 1}>{i + 1}</option>
+        <option value={i + 1}>{i + 1}명</option>
       {/each}
-    </select>명
+    </select>
   </div>
+  <div class="form-item">
+    <label>테마가격:</label>
+    <p>{currentPrice.toLocaleString("ko-KR")}</p>
+  </div>
+  <div class="form-item">
+    <label>할인정보:</label>
+    <p>없음</p>
+  </div>
+  <div class="form-item">
+    <label>결제방식:</label>
+    <p>무통장 입금</p>
+  </div>
+
   <button type="submit">예약하기</button>
 </form>
 
@@ -57,14 +85,18 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   }
 
-  h2 {
-    color: #333;
-  }
-
   .form-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .form-item select{
+    width: 100px;
+  }
+
+  p {
+    color: #333;
+    margin-left: 10px;
   }
 
   select {
