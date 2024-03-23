@@ -1,11 +1,16 @@
 <script>
-    export let time;
+    import { router } from "tinro";
+    export let time; // 시간
+    export let themeId; // 테마
     export let isReserved;
+    function goInfo(){
+        router.goto(`/reservation/${themeId}/${time}`);
+    }
 </script>
 
 <button 
-    class="time-table-button" 
-    style="background-color: {isReserved ? 'grey' : 'rgb(240, 175, 185)'};" 
+on:click={goInfo}
+    class="time-table-button {isReserved ? 'reserved' : 'available'}" 
     disabled={isReserved}>
     
     {time}
@@ -29,7 +34,11 @@
         cursor: pointer;
         text-align: center;
     }
-    .time-table-button:disabled {
+    .time-table-button.reserved {
+        background-color: grey;
         cursor: default;
+    }
+    .time-table-button.available {
+        background-color: rgb(240, 175, 185);
     }
 </style>

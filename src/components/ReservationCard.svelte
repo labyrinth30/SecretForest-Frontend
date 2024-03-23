@@ -1,5 +1,6 @@
 <script>
     import ReservationTimeTableButton from "./ReservationTimeTableButton.svelte";
+    import { date} from "../stores/index.js";
     export let theme;
     let timeSlots = [
     {
@@ -66,8 +67,8 @@
             <div class="time-table-grid-container">
                 <div class="time-table-grid">
                     {#each timeSlots as slot (slot.time)}
-                    <ReservationTimeTableButton time={slot.time} isReserved={slot.isReserved} />
-                {/each}
+                        <ReservationTimeTableButton time={slot.time} isReserved={slot.isReserved} themeId="{theme.id}"/>
+                    {/each}
                 </div>
                 
             </div>

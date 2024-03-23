@@ -1,10 +1,6 @@
 <script>
   import ThemeModal from "./ThemeModal.svelte";
-  export let title;
-  export let imageUrl;
-  export let difficulty;
-  export let genre;
-  export let content;
+  export let theme;
   
   let showModal = false;
 
@@ -19,18 +15,18 @@
 
 <div class="theme-card">
   <div class="image-container" on:click={openModal}>
-    <img src={imageUrl} alt={title} />
+    <img src={theme.imageUrl} alt={theme.title} />
   </div>
   <div class="text-container">
-    <p class="title">{title}</p>
+    <p class="title">{theme.title}</p>
     <div class="tags">
-      <span class="difficulty">{difficulty}</span>
-      <span class="genre">{genre}</span>
+      <span class="difficulty">{theme.difficulty}</span>
+      <span class="genre">{theme.genre}</span>
     </div>
   </div>
 </div>
 
 {#if showModal}
-  <ThemeModal title={title} content={content} on:close={closeModal} />
+  <ThemeModal {theme} on:close={closeModal} />
 {/if}
 
