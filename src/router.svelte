@@ -4,6 +4,7 @@
     import Login from './pages/Login.svelte';
     import Register from './pages/Register.svelte';
     import Theme from './pages/Theme.svelte';
+    import Reservation from './pages/Reservation.svelte';
 </script>
 
 <Route path="/"><Home /></Route>
@@ -11,3 +12,4 @@
 <Route path="/login"><Login /></Route>
 <Route path="/register"><Register /></Route>
 <Route path="/theme"><Theme /></Route>
+<Route path="/reservation"><Reservation /></Route>

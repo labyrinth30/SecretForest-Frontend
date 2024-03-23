@@ -9,8 +9,8 @@
   function closeModal() {
     dispatch('close'); // 부모 컴포넌트에게 'close' 이벤트 전달
   }
-  function goReservations() {
-    router.goto('/reservations');
+  function goReservation() {
+    router.goto('/reservation');
   }
 </script>
 
@@ -19,7 +19,7 @@
     <button class="close-button" on:click={closeModal}>X</button>
     <h2>{title}</h2>
     <p>{content}</p>
-    <button class="reservation-button" on:click={goReservations}>예약하기</button>
+    <button class="reservation-button" on:click={goReservation}>예약하기</button>
   </div>
 </div>
 
