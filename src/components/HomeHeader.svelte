@@ -24,7 +24,7 @@
 	>
 		<button
 			class="main-menu mr-6"
-			class:main-menu-selected={url === '/reservation'}
+			class:main-menu-selected={url.startsWith('/reservation')}
 			on:click={goReservation}>RESERVATION</button
 		>
 	</nav>

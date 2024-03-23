@@ -2,17 +2,17 @@ import { writable, get, derived } from "svelte/store";
 import { getApi, patchApi, postApi, delApi } from "../service/api";
 import { router } from "tinro";
 
-function setAuth(){
+function setAuth() {
   let initValues = {
     id: '',
     email: '',
     Authorization: '', // access_token
   }
-  const { subscribe, set } = writable({...initValues});
+  const { subscribe, set } = writable({ ...initValues });
 
   const refresh = async () => {
     try {
-      const authenticateUser = await postApi({path: '/auth/refresh'});
+      const authenticateUser = await postApi({ path: '/auth/refresh' });
       set(authenticateUser);
       isRefresh.set(true);
     } catch (error) {
@@ -21,7 +21,7 @@ function setAuth(){
     }
   };
 
-  const resetUserInfo = async () => set({...initValues});
+  const resetUserInfo = async () => set({ ...initValues });
   const login = async (email, password) => {
     try {
       const options = {
@@ -46,7 +46,7 @@ function setAuth(){
         path: '/auth/logout',
       }
       await delApi(options);
-      set({...initValues});
+      set({ ...initValues });
       isRefresh.set(false);
       router.goto('/home');
     } catch (error) {
@@ -76,16 +76,29 @@ function setAuth(){
   return {
     subscribe,
     refresh,
-    resetUserInfo, 
+    resetUserInfo,
     login,
     logout,
     register,
   }
 }
 
-function setIsLogin(){
+function setIsLogin() {
   const checkIsLogin = derived(auth, $auth => $auth.Authorization ? true : false);
   return checkIsLogin;
+}
+
+
+function persist(key, value) {
+    const storedValue = localStorage.getItem(key);
+    const initialValue = storedValue ? JSON.parse(storedValue) : value;
+    const store = writable(initialValue);
+
+    store.subscribe(($value) => {
+        localStorage.setItem(key, JSON.stringify($value));
+    });
+
+    return store;
 }
 
 
@@ -93,3 +106,5 @@ function setIsLogin(){
 export const auth = setAuth();
 export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
+export const date = persist('date', new Date());
+export const theme = persist('theme', '0');
