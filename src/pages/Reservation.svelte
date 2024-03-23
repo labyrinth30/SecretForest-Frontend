@@ -25,11 +25,10 @@
 
     onMount(fetchData);
 
-    $: {
-        currentTheme = $theme;
-        currentDate = $date;
-        fetchData(); // date 또는 theme이 변경될 때마다 fetchData 함수를 호출합니다.
-    }
+    $: currentTheme = $theme; // theme 값 변화에 따른 대응
+    $: currentDate = $date; 
+    $: fetchData(), currentTheme;
+    $: fetchData(), currentDate;
 </script>
 
 <HomeHeader />
@@ -38,7 +37,9 @@
 <br />
 <ReservationFilter />
 <br />
-{#each themes as theme}
-    <ReservationCard {theme} />
+{#each themes as theme (theme.id)}
+    {#if currentTheme === "0" || theme.id === currentTheme}
+        <ReservationCard {theme} />
+    {/if}
 {/each}
 <HomeFooter />
