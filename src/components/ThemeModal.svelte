@@ -1,15 +1,15 @@
 <script>
   import { router } from "tinro";
+  import { theme as currentTheme} from '../stores/index.js';
   import { createEventDispatcher } from 'svelte';
-  export let title;
-  export let content;
-
+  export let theme;
   const dispatch = createEventDispatcher();
 
   function closeModal() {
     dispatch('close'); // 부모 컴포넌트에게 'close' 이벤트 전달
   }
   function goReservation() {
+    currentTheme.set(theme.id)
     router.goto('/reservation');
   }
 </script>
@@ -17,8 +17,8 @@
 <div class="modal-background" on:click={closeModal}>
   <div class="modal-content" on:click|stopPropagation>
     <button class="close-button" on:click={closeModal}>X</button>
-    <h2>{title}</h2>
-    <p>{content}</p>
+    <h2>{theme.title}</h2>
+    <p>{theme.content}</p>
     <button class="reservation-button" on:click={goReservation}>예약하기</button>
   </div>
 </div>
@@ -54,18 +54,18 @@
   }
 
   .reservation-button {
-    width: 100%; /* 버튼을 modal-content의 너비에 맞게 조절 */
-    padding: 10px 0; /* 상하 패딩으로 버튼 높이 조절 */
-    background-color: #007bff; /* 파란색 배경 */
-    color: white; /* 글자색은 흰색으로 */
-    border: none; /* 테두리 없애기 */
-    border-radius: 5px; /* 버튼 모서리를 약간 둥글게 */
-    cursor: pointer; /* 마우스 오버 시 커서 변경 */
-    font-size: 16px; /* 글자 크기 조절 */
-    margin-top: 20px; /* 내용과의 간격 */
+    width: 100%;
+    padding: 10px 0; 
+    background-color: #007bff;
+    color: white;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 16px;
+    margin-top: 20px; 
   }
 
   .reservation-button:hover {
-    background-color: #0056b3; /* 버튼 호버 시 색상 변경 */
+    background-color: #0056b3; 
   }
 </style>

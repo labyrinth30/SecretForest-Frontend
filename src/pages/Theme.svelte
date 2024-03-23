@@ -8,13 +8,9 @@
   <HomeHeader />
   
   <div style="display: flex; flex-wrap: wrap;"> 
-    {#each themes as { title, imageUrl, difficulty, genre, content}}
+    {#each themes as theme}
     <ThemeCard
-      {title}
-      {imageUrl}
-      {difficulty}
-      {genre}
-      {content}
+      {theme}
       />
       {/each}
   </div>
