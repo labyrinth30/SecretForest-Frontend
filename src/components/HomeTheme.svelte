@@ -63,7 +63,7 @@
         <button on:click={(event) => handleButtonClick(event, prev)} class="prev">Prev</button>
         <button on:click={(event) => handleButtonClick(event, next)} class="next">Next</button>
       </div>
-      <div class="papagination">
+      <div class="pagination">
         {#each images as _, i}
           <button
             class={currId === i ? 'active' : ''}
@@ -115,24 +115,24 @@
       cursor: pointer;
     }
   
-    .papagination {
+    .pagination {
       position: absolute;
       bottom: 0;
-      padding-bottom: 8px;
       width: 100%;
+      padding: 10px 5px;
     }
   
-    .papagination button {
+    .pagination button {
       margin: 0 4px;
       width: 14px;
       height: 14px;
       border: 0;
-      border-radius: 50%;
+      border-radius: 80%;
       background-color: rgba(255, 255, 255, 0.8);
       text-align: center;
       cursor: pointer;
     }
-    .papagination .active {
+    .pagination .active {
       background-color: rgba(255, 0, 0, 0.8);
     }
   </style>
