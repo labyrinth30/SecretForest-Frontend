@@ -106,5 +106,5 @@ function persist(key, value) {
 export const auth = setAuth();
 export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
-export const date = persist('date', new Date());
+export const date = persist('date', new Date().toISOString().slice(0,10));
 export const theme = persist('theme', '0');
