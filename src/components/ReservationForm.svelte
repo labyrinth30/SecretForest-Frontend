@@ -38,19 +38,19 @@
 <form on:submit={handleSubmit}>
   <div class="form-item">
     <label>테마명:</label>
-    <p>{findThemeTitleById(theme)}</p>
+    <input type="text" name="themeTitle" value={findThemeTitleById(theme)} readonly />
   </div>
   <div class="form-item">
     <label>예약일:</label>
-    <p>{$date}</p>
+    <input type="text" name="reservationDate" value={$date} readonly />
   </div>
   <div class="form-item">
     <label>예약시간:</label>
-    <p>{timeNum}</p>
+    <input type="text" name="reservationTime" value={timeNum} readonly />
   </div>
   <div class="form-item">
     <label for="personCount">인원:</label>
-    <select bind:value={personCount} id="personCount">
+    <select bind:value={personCount} id="personCount" name="personCount">
       {#each Array(MAX_PERSON) as _, i (i)}
         <option value={i + 1}>{i + 1}명</option>
       {/each}
@@ -58,26 +58,27 @@
   </div>
   <div class="form-item">
     <label>테마가격:</label>
-    <p>{currentPrice.toLocaleString("ko-KR")}</p>
+    <input type="text" name="themePrice" value={currentPrice.toLocaleString("ko-KR")} readonly />
   </div>
   <div class="form-item">
     <label>할인정보:</label>
-    <p>없음</p>
+    <input type="text" name="discountInfo" value='없음' readonly />
   </div>
   <div class="form-item">
     <label>결제방식:</label>
-    <p>무통장 입금</p>
+    <input type="text" name="paymentMethod" value='현장 결제' readonly />
   </div>
 
   <button type="submit">예약하기</button>
 </form>
+
 
 <style>
   form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
@@ -92,12 +93,9 @@
   }
   .form-item select{
     width: 100px;
+    margin-right: 50px;
   }
 
-  p {
-    color: #333;
-    margin-left: 10px;
-  }
 
   select {
     width: 60px;
@@ -117,4 +115,11 @@
   button:hover {
     background-color: #0056b3;
   }
+  input[readonly] {
+  background: none;
+  border: none;
+  color: #333;
+  outline: none;
+}
+
 </style>
