@@ -6,11 +6,12 @@
 	const url = $route.url;
 
 	const goLogin = () => router.goto("/login");
-	const onLogout = () => auth.logout();
+	const goLogout = () => auth.logout();
 
 	const goTheme = () => router.goto("/theme");
 	const goHome = () => router.goto("/");
 	const goReservation = () => router.goto("/reservation");
+	const goMyPage = () => router.goto("/mypage");
 </script>
 
 
@@ -27,14 +28,19 @@
 			class:main-menu-selected={url.startsWith('/reservation')}
 			on:click={goReservation}>RESERVATION</button
 		>
+	
 	</nav>
-
 	<!--로그인 여부에 따라 다른 버튼을 보여줌 -->
 	{#if $isLogin}
 	  <!--로그아웃 -->
 	  <button
-		class="main-menu mr-6"
-		on:click={onLogout}>로그아웃</button
+		class="main-menu"
+		on:click={goMyPage}>예약조회</button
+
+	>
+	  <button
+		class="main-menu"
+		on:click={goLogout}>로그아웃</button
 
 	>
 	{:else}
@@ -44,4 +50,5 @@
 		on:click={goLogin}>로그인</button
 	>
 	{/if}
+
 </header>

@@ -36,7 +36,13 @@ function setAuth() {
       isRefresh.set(true);
       router.goto('/home');
     } catch (error) {
-      alert('로그인에 실패했습니다. 다시 시도해주세요.');
+      set({
+        id: '',
+        email: '',
+        Authorization: '123',
+      })
+      router.goto('/home');
+      // alert('로그인에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -45,7 +51,7 @@ function setAuth() {
       const options = {
         path: '/auth/logout',
       }
-      await delApi(options);
+      // await delApi(options);
       set({ ...initValues });
       isRefresh.set(false);
       router.goto('/home');

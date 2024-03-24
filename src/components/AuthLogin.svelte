@@ -16,8 +16,8 @@
 
 	const onLogin = async () => {
     try {
-      await auth.login(values.formEmail, values.formPassword);
       await loginValidate.validate(values, {abortEarly: false});
+      await auth.login(values.formEmail, values.formPassword);
       resetValues();
     }
     catch(error) {

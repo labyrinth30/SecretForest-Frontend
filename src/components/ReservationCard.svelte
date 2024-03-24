@@ -1,6 +1,5 @@
 <script>
     import ReservationTimeTableButton from "./ReservationTimeTableButton.svelte";
-    import { date} from "../stores/index.js";
     export let theme;
     let timeSlots = [
     {
