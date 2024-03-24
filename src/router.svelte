@@ -8,6 +8,7 @@
     import ReservationInfo from './pages/ReservationInfo.svelte';
     import ReservationComplete from './pages/ReservationComplete.svelte';
     import NotFound from './pages/NotFound.svelte';
+    import MyPage from './pages/MyPage.svelte';
 </script>
 
 <Route path="/"><Home /></Route>
@@ -19,5 +20,6 @@
 <Route path="/reservation/:theme/:timeNum" let:meta>
     <ReservationInfo theme={meta.params.theme} timeNum={meta.params.timeNum}/>
   </Route>
+<Route path="mypage" ><MyPage /></Route>
 <Route path="/reservation-complete"><ReservationComplete /></Route>
 <Route fallback><NotFound /></Route>
