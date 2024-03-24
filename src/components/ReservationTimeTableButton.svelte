@@ -1,9 +1,15 @@
 <script>
+	import { isLogin } from './../stores/index.js';
     import { router } from "tinro";
     export let time; // 시간
     export let themeId; // 테마
     export let isReserved;
     function goInfo(){
+        if($isLogin === false){
+            alert('로그인이 필요합니다.');
+            router.goto('/login');
+            return;
+        }
         router.goto(`/reservation/${themeId}/${time}`);
     }
 </script>
