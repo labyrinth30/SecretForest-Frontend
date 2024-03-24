@@ -13,6 +13,7 @@
 }
 
 .p-main-title {
+  width: 300px;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -32,8 +33,14 @@
 
 .main-nav {
   display: flex;
-  width: 40rem;
+  width:40%;
   justify-content: center;
+}
+.sub-nav {
+  display: flex;
+  width: 25%;
+  justify-content: center;
+
 }
 
 .main-menu-selected {
