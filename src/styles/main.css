@@ -13,7 +13,6 @@
 }
 
 .p-main-title {
-  width: 300px;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -33,16 +32,9 @@
 
 .main-nav {
   display: flex;
-  width:40%;
+  width:20rem;
   justify-content: center;
 }
-.sub-nav {
-  display: flex;
-  width: 25%;
-  justify-content: center;
-
-}
-
 .main-menu-selected {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -65,13 +57,17 @@
   background-color: transparent;
   border: none;
 }
-
-.main-menu-selected {
+.main-menu-title {
   font-size: 1.5rem;
-  line-height: 2rem;
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  line-height: 1.75rem;
+  font-weight:700;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  background-color: transparent;
+  border: none;
 }
+
+
 
 
 .mr-6 {
@@ -165,7 +161,7 @@
 
 .auth-input-text {
   display: block;
-  width: 100%;
+  width: 90%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;

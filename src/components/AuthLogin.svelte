@@ -33,8 +33,9 @@
 <div class="auth-content-box " >        
   <div class="auth-box-main">
     <div class="auth-input-box">
-      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formEmail} class:wrong={errors.formEmail} />
       <label for="floating_email" class="auth-input-label">이메일</label>
+      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formEmail} class:wrong={errors.formEmail} />
+     
     </div>      
     <div class="auth-input-box">
       <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formPassword} class:wrong={errors.formPassword} />
