@@ -14,41 +14,36 @@
 	const goMyPage = () => router.goto("/mypage");
 </script>
 
-
 <header class="main-header">
-	<p class="p-main-title" on:click={goHome}>비밀의 숲</p>
-	<nav class="main-nav">
-		<button
-		class="main-menu mr-6"
-		class:main-menu-selected={url === '/theme'}
-		on:click={goTheme}>THEME</button
-	>
-		<button
+	<button class="main-menu-title" on:click={goHome}>비밀의 숲</button>
+	<nav class="main-nav mr-6">
+			<button
 			class="main-menu mr-6"
-			class:main-menu-selected={url.startsWith('/reservation')}
-			on:click={goReservation}>RESERVATION</button
-		>
+			class:main-menu-selected={url === '/theme'}
+			on:click={goTheme}>테마</button
+			>
+			<button
+				class="main-menu mr-6"
+				class:main-menu-selected={url.startsWith('/reservation')}
+				on:click={goReservation}>예약</button
+			>
 	
+
+		<div>
+			{#if $isLogin}
+			<button
+			class="main-menu"
+			class:main-menu-selected={url.startsWith('/mypage')}
+			on:click={goMyPage}>예약조회</button>
+			<button
+			class="main-menu"
+			on:click={goLogout}>로그아웃</button>
+			{:else}
+			<button
+			class="main-menu mr-6"
+			on:click={goLogin}>로그인</button>
+			{/if}
+		</div>
+
 	</nav>
-	<!--로그인 여부에 따라 다른 버튼을 보여줌 -->
-	{#if $isLogin}
-	  <!--로그아웃 -->
-	  <button
-		class="main-menu"
-		on:click={goMyPage}>예약조회</button
-
-	>
-	  <button
-		class="main-menu"
-		on:click={goLogout}>로그아웃</button
-
-	>
-	{:else}
-		<!--로그인 -->
-		<button
-		class="main-menu mr-6"
-		on:click={goLogin}>로그인</button
-	>
-	{/if}
-
 </header>

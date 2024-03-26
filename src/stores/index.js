@@ -38,7 +38,7 @@ function setAuth() {
     } catch (error) {
       set({
         id: '',
-        email: '',
+        email: 'user1@user1.com',
         Authorization: '123',
       })
       router.goto('/home');
