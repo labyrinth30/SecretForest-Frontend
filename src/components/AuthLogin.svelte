@@ -33,14 +33,11 @@
 <div class="auth-content-box " >        
   <div class="auth-box-main">
     <div class="auth-input-box">
-      <label for="floating_email" class="auth-input-label">이메일</label>
-      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formEmail} class:wrong={errors.formEmail} />
-     
+      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="이메일" bind:value={values.formEmail} class:wrong={errors.formEmail} />
     </div>      
     <div class="auth-input-box">
-      <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formPassword} class:wrong={errors.formPassword} />
-      <label for="floating_email" class="auth-input-label">비밀번호</label>
-    </div>    
+      <input type="password" name="floating_password" id="floating_password" class="auth-input-text peer" placeholder="비밀번호" bind:value={values.formPassword} class:wrong={errors.formPassword} />
+    </div> 
   </div>
   <div class="content-box-bottom">
     <div class="button-box">

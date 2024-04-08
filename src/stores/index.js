@@ -25,19 +25,18 @@ function setAuth() {
 
   const login = async (email, password) => {
     try {
-      // 이메일과 비밀번호를 ":"로 결합하고 Base64로 인코딩
       const encodedCredentials = btoa(`${email}:${password}`);
       const options = {
         path: '/auth/login/email',
-        access_token: `Basic ${encodedCredentials}`, // 이제 access_token을 사용하여 인증 정보를 전달
+        access_token: `Basic ${encodedCredentials}`, 
       }
       const result = await postApi(options);
       set(result);
+      alert('로그인 되었습니다.');
       isRefresh.set(true);
       router.goto('/home');
     } catch (error) {
-      router.goto('/home');
-      alert('로그인에 실패했습니다. 다시 시도해주세요.');
+      alert(`${error.response.data.message}`);
     }
   };
 
@@ -48,6 +47,7 @@ function setAuth() {
       }
       // await delApi(options);
       set({ ...initValues });
+      alert('로그아웃 되었습니다.');
       isRefresh.set(false);
       router.goto('/home');
     } catch (error) {
@@ -58,7 +58,7 @@ function setAuth() {
   const register = async (email, password, name, contact) => {
     try {
       const options = {
-        path: '/auth/register',
+        path: '/auth/register/email',
         data: {
           email,
           password,
@@ -70,7 +70,7 @@ function setAuth() {
       alert('회원가입이 완료되었습니다.');
       router.goto('/home');
     } catch (error) {
-      alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+      alert(`${error.response.data.message}`);
     }
   };
 

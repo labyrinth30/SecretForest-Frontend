@@ -21,7 +21,7 @@
         }
 
         // Access token을 가져옵니다.
-        const access_token = get(auth).Authorization;
+        const access_token = get(auth).accessToken;
 
         try {
             const response = await postApi({

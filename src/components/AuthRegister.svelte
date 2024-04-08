@@ -31,24 +31,20 @@
 <div class="auth-content-box" >        
   <div class="auth-box-main">
     <div class="auth-input-box">
-      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formEmail} class:wrong={errors.formEmail} />
-      <label for="floating_email" class="auth-input-label">이메일</label>
+      <input type="email" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="이메일" bind:value={values.formEmail} class:wrong={errors.formEmail} />
     </div>      
     <div class="auth-input-box">
-      <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formPassword} class:wrong={errors.formPassword} />
-      <label for="floating_email" class="auth-input-label">비밀번호</label>
+      <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="비밀번호" bind:value={values.formPassword} class:wrong={errors.formPassword} />
+
     </div>      
     <div class="auth-input-box">
-      <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formPasswordConfirm} class:wrong={errors.formPasswordConfirm} />
-      <label for="floating_email" class="auth-input-label">비밀번호 확인</label>
+      <input type="password" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="비밀번호 확인" bind:value={values.formPasswordConfirm} class:wrong={errors.formPasswordConfirm} />
     </div>
     <div class="auth-input-box">
-      <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder=" " bind:value={values.formName} class:wrong={errors.formName} />
-      <label for="floating_email" class="auth-input-label">이름</label>
+      <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="이름" bind:value={values.formName} class:wrong={errors.formName} />
     </div>  
     <div class="auth-input-box">
-      <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="" bind:value={values.formContact} class:wrong={errors.formContact} />
-      <label for="floating_email" class="auth-input-label">연락처</label>
+      <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="연락처" bind:value={values.formContact} class:wrong={errors.formContact} />
     </div>           
   </div>
   <div class="content-box-bottom">
