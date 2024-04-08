@@ -27,7 +27,6 @@
         <div class="modal">
             <div class="modal-content">
                 <h2>개인 정보 수정하기</h2>
-
                 <form on:submit|preventDefault={handleSave}>
                     <label for="email">이메일</label>
                     <input
@@ -35,8 +34,7 @@
                         type="email"
                         value="user1@user1.com"
                         readonly
-                    />
-
+                    />,
                     <label for="name">이름</label>
                     <input id="name" type="text" bind:value={tempName} />
 
@@ -117,48 +115,8 @@
     }
     button[type="submit"] {
         margin-top: 10px;
-    } /* Profile Box */
-    .profile-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .profile-box img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .profile-box h2 {
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    .profile-box p {
-        color: #555;
-        font-size: 1.1rem;
-    }
-    .profile-box button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    .profile-box button:hover {
-        background-color: #0056b3;
-    } /* Modal */
+    } 
+    /* Modal */
     .modal {
         position: fixed;
         top: 0;

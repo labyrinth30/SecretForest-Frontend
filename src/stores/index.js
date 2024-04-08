@@ -6,13 +6,13 @@ function setAuth() {
   let initValues = {
     id: '',
     email: '',
-    Authorization: '', // access_token
+    accessToken: '', 
   }
   const { subscribe, set } = writable({ ...initValues });
 
   const refresh = async () => {
     try {
-      const authenticateUser = await postApi({ path: '/auth/refresh' });
+      const authenticateUser = await postApi({ path: '/auth/token/refresh' });
       set(authenticateUser);
       isRefresh.set(true);
     } catch (error) {
@@ -22,27 +22,22 @@ function setAuth() {
   };
 
   const resetUserInfo = async () => set({ ...initValues });
+
   const login = async (email, password) => {
     try {
+      // 이메일과 비밀번호를 ":"로 결합하고 Base64로 인코딩
+      const encodedCredentials = btoa(`${email}:${password}`);
       const options = {
-        path: '/auth/login',
-        data: {
-          email,
-          password,
-        }
+        path: '/auth/login/email',
+        access_token: `Basic ${encodedCredentials}`, // 이제 access_token을 사용하여 인증 정보를 전달
       }
       const result = await postApi(options);
       set(result);
       isRefresh.set(true);
       router.goto('/home');
     } catch (error) {
-      set({
-        id: '',
-        email: 'user1@user1.com',
-        Authorization: '123',
-      })
       router.goto('/home');
-      // alert('로그인에 실패했습니다. 다시 시도해주세요.');
+      alert('로그인에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -90,21 +85,21 @@ function setAuth() {
 }
 
 function setIsLogin() {
-  const checkIsLogin = derived(auth, $auth => $auth.Authorization ? true : false);
+  const checkIsLogin = derived(auth, $auth => $auth.accessToken ? true : false);
   return checkIsLogin;
 }
 
 
 function persist(key, value) {
-    const storedValue = localStorage.getItem(key);
-    const initialValue = storedValue ? JSON.parse(storedValue) : value;
-    const store = writable(initialValue);
+  const storedValue = localStorage.getItem(key);
+  const initialValue = storedValue ? JSON.parse(storedValue) : value;
+  const store = writable(initialValue);
 
-    store.subscribe(($value) => {
-        localStorage.setItem(key, JSON.stringify($value));
-    });
+  store.subscribe(($value) => {
+    localStorage.setItem(key, JSON.stringify($value));
+  });
 
-    return store;
+  return store;
 }
 
 
@@ -112,5 +107,5 @@ function persist(key, value) {
 export const auth = setAuth();
 export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
-export const date = persist('date', new Date().toISOString().slice(0,10));
+export const date = persist('date', new Date().toISOString().slice(0, 10));
 export const theme = persist('theme', '0');
