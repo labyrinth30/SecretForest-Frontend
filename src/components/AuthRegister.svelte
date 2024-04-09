@@ -9,13 +9,12 @@
     formPassword: '',
     formPasswordConfirm: '',
     formName: '',
-    formContact: ''
   };
 
   const onRegister = async () => {
     try {
       await registerValidate.validate(values, {abortEarly: false}); 
-      await auth.register(values.formEmail, values.formPassword, values.formName, values.formContact);
+      await auth.register(values.formEmail, values.formPassword, values.formName);
     } 
     catch(error) {
       errors = extractErrors(error);
@@ -23,7 +22,6 @@
       if(errors.formPassword) alert(errors.formPassword);
       if(errors.formPasswordConfirm) alert(errors.formPasswordConfirm);
       if(errors.formName) alert(errors.formName);
-      if(errors.formContact) alert(errors.formContact);
     }
   }
 </script>
@@ -42,9 +40,6 @@
     </div>
     <div class="auth-input-box">
       <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="이름" bind:value={values.formName} class:wrong={errors.formName} />
-    </div>  
-    <div class="auth-input-box">
-      <input type="text" name="floating_email" id="floating_email" class="auth-input-text peer" placeholder="연락처" bind:value={values.formContact} class:wrong={errors.formContact} />
     </div>           
   </div>
   <div class="content-box-bottom">

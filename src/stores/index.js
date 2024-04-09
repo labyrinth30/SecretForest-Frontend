@@ -55,7 +55,7 @@ function setAuth() {
     }
   };
 
-  const register = async (email, password, name, contact) => {
+  const register = async (email, password, name) => {
     try {
       const options = {
         path: '/auth/register/email',
@@ -63,10 +63,10 @@ function setAuth() {
           email,
           password,
           name,
-          contact,
         },
       }
-      await postApi(options);
+      const result = await postApi(options);
+      set(result);
       alert('회원가입이 완료되었습니다.');
       router.goto('/home');
     } catch (error) {

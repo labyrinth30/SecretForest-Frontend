@@ -16,5 +16,4 @@ export const registerValidate = yup.object().shape({
   formPassword: yup.string().required('비밀번호를 입력해주세요.'),
   formPasswordConfirm: yup.string().required('비밀번호 확인을 입력해주세요.').oneOf([yup.ref('formPassword'), null ],'비밀번호와 비밀번호 확인이 일치하지 않습니다.').label('패스워드 확인'),
   formName: yup.string().required('이름을 입력해주세요.'),
-  formContact: yup.string().matches(/^[0-9]{3}[0-9]{3,4}[0-9]{4}$/, '올바른 연락처 형식이 아닙니다.').required('연락처를 입력해주세요.'),
 })
