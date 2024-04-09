@@ -21,6 +21,31 @@ function setAuth() {
     }
   };
 
+  const refreshAccessToken = async () => {
+    try {
+      const authenticateUser = await postApi({ path: '/auth/token/access' });
+      updateUserInfo(authenticateUser);
+    } catch (error) {
+      auth.resetUserInfo();
+    }
+  }
+  const updateUserInfo = (newData) => {
+    set({ ...get(auth), ...newData });
+  };
+
+  const fetchUserInfo = async () => {
+    try {
+      const options = {
+        path: '/auth/me',
+        access_token: `Bearer ${get(auth).accessToken}`, 
+      }
+      const userInfo = await getApi(options);
+      updateUserInfo(userInfo);
+    } catch (error) {
+      auth.resetUserInfo();
+    }
+  }
+
   const resetUserInfo = async () => set({ ...initValues });
 
   const login = async (email, password) => {
@@ -30,8 +55,7 @@ function setAuth() {
         path: '/auth/login/email',
         access_token: `Basic ${encodedCredentials}`, 
       }
-      const result = await postApi(options);
-      set(result);
+      await postApi(options);
       alert('로그인 되었습니다.');
       isRefresh.set(true);
       router.goto('/home');
@@ -45,7 +69,7 @@ function setAuth() {
       const options = {
         path: '/auth/logout',
       }
-      // await delApi(options);
+      await postApi(options);
       set({ ...initValues });
       alert('로그아웃 되었습니다.');
       isRefresh.set(false);
@@ -65,22 +89,25 @@ function setAuth() {
           name,
         },
       }
-      const result = await postApi(options);
-      set(result);
-      alert('회원가입이 완료되었습니다.');
+      await postApi(options);
+      alert('회원가입 되었습니다.');
       router.goto('/home');
     } catch (error) {
       alert(`${error.response.data.message}`);
     }
   };
 
+
   return {
     subscribe,
     refresh,
+    refreshAccessToken,
+    fetchUserInfo,
     resetUserInfo,
     login,
     logout,
     register,
+    updateUserInfo,
   }
 }
 

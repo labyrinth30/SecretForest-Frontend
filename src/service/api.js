@@ -6,7 +6,6 @@ const send = async ({method='', path='', data={}, access_token=''} = {}) => {
 
   const headers = {
     "Access-Control-Allow-Origin":commonUrl,
-    // "Access-Control-Allow-Origin":"*", // 쿠키가 없을 경우는 * 
     "Access-Control-Allow-Credentials":true,
     "content-type": "application/json;charset=UTF-8",
     "accept": "application/json,",

@@ -27,6 +27,11 @@
       if(errors.formPassword) alert(errors.formPassword);
     }
   }
+  
+  const googleLogin = () => {
+    window.location.href = 'http://localhost:3000/auth/to-google';
+    
+};
 
 </script>
 
@@ -40,6 +45,7 @@
     </div> 
   </div>
   <div class="content-box-bottom">
+   <button on:click={googleLogin}>구글 로그인</button>
     <div class="button-box">
       <button class="button-base" on:click={onLogin}>로그인</button>
     </div>
