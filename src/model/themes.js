@@ -1,4 +1,7 @@
-// src/themes.js
+// 테마 정보를 담은 배열
+// 서버에서 데이터를 받아오는 것으로 변경하는 코드
+// api 주소는 GET /themes
+
 export const themes = [
     {
         id: "1",

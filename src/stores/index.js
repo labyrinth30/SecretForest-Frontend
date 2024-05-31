@@ -12,7 +12,9 @@ function setAuth() {
 
   const refresh = async () => {
     try {
-      const authenticateUser = await postApi({ path: '/auth/token/refresh' });
+      const authenticateUser = await postApi({ 
+        baseURL:'http://localhost:3001',
+        path: '/auth/token/refresh' });
       set(authenticateUser);
       isRefresh.set(true);
     } catch (error) {
@@ -23,7 +25,9 @@ function setAuth() {
 
   const refreshAccessToken = async () => {
     try {
-      const authenticateUser = await postApi({ path: '/auth/token/access' });
+      const authenticateUser = await postApi({ 
+        baseURL:'http://localhost:3001',
+        path: '/auth/token/access' });
       updateUserInfo(authenticateUser);
     } catch (error) {
       auth.resetUserInfo();
@@ -36,6 +40,7 @@ function setAuth() {
   const fetchUserInfo = async () => {
     try {
       const options = {
+        baseURL:'http://localhost:3001',
         path: '/auth/token/access',
       }
       const userInfo = await postApi(options);
@@ -49,8 +54,8 @@ function setAuth() {
 
   const login = async (email, password) => {
     try {
-      const encodedCredentials = btoa(`${email}:${password}`);
       const options = {
+        baseURL:'http://localhost:3001',
         path: '/auth/login/email',
         data: {
           email,
@@ -69,6 +74,7 @@ function setAuth() {
   const logout = async () => {
     try {
       const options = {
+        baseURL:'http://localhost:3001',
         path: '/auth/logout',
       }
       await postApi(options);
@@ -84,6 +90,7 @@ function setAuth() {
   const register = async (email, password, name) => {
     try {
       const options = {
+        baseURL:'http://localhost:3001',
         path: '/auth/register/email',
         data: {
           email,
@@ -131,10 +138,31 @@ function persist(key, value) {
   return store;
 }
 
+function setTheme() {
+  let initValues = {
+    themes: [],
+  }
+  const { subscribe, set } = writable({ ...initValues });
+const getThemes = async () => {
+  try {
+    const options = {
+      baseURL:'http://localhost:3000',
+      path: '/themes',
+    }
+    await getApi(options);
+  } catch (error) {
+    alert(`${error.response.data.message}`);
+  }
+};
+return {
+  getThemes,
+}
+
+}
 
 
 export const auth = setAuth();
 export const isLogin = setIsLogin();
 export const isRefresh = writable(false);
 export const date = persist('date', new Date().toISOString().slice(0, 10));
-export const theme = persist('theme', '0');
+export const theme = setTheme();
