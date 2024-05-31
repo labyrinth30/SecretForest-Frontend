@@ -36,10 +36,9 @@ function setAuth() {
   const fetchUserInfo = async () => {
     try {
       const options = {
-        path: '/auth/me',
-        access_token: `Bearer ${get(auth).accessToken}`, 
+        path: '/auth/token/access',
       }
-      const userInfo = await getApi(options);
+      const userInfo = await postApi(options);
       updateUserInfo(userInfo);
     } catch (error) {
       auth.resetUserInfo();
@@ -53,7 +52,10 @@ function setAuth() {
       const encodedCredentials = btoa(`${email}:${password}`);
       const options = {
         path: '/auth/login/email',
-        access_token: `Basic ${encodedCredentials}`, 
+        data: {
+          email,
+          password,
+        },
       }
       await postApi(options);
       alert('로그인 되었습니다.');
