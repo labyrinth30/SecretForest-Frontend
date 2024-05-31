@@ -141,25 +141,31 @@ function persist(key, value) {
 function setTheme() {
   let initValues = {
     themes: [],
-  }
-  const { subscribe, set } = writable({ ...initValues });
-const getThemes = async () => {
-  try {
-    const options = {
-      baseURL:'http://localhost:3000',
-      path: '/themes',
+  };
+  const { subscribe, set, update } = writable({ ...initValues });
+
+  const updateThemeInfo = (newData) => {
+    update(current => ({ ...current, ...newData }));
+  };
+
+  const getThemes = async () => {
+    try {
+      const options = {
+        baseURL:'http://localhost:3000',
+        path: '/themes',
+      }
+      const serverTheme = await getApi(options);
+      set(serverTheme);
+        updateThemeInfo(serverTheme);
+    } catch (error) {
+      alert(`${error.response.data.message}`);
     }
-    await getApi(options);
-  } catch (error) {
-    alert(`${error.response.data.message}`);
-  }
-};
-return {
-  getThemes,
+  };
+  return {
+    subscribe,
+    getThemes,
+  };
 }
-
-}
-
 
 export const auth = setAuth();
 export const isLogin = setIsLogin();

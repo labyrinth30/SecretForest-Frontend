@@ -29,4 +29,3 @@
 {#if showModal}
   <ThemeModal {theme} on:close={closeModal} />
 {/if}
-
