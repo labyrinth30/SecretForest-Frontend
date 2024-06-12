@@ -15,7 +15,7 @@
     const fetchData = async () => {
         try {
             const data = await getApi({
-                path: `/reservation?date=${currentDate}&theme=${currentTheme}`,
+                path: `/slots?date=${currentDate}&theme=${currentTheme}`,
             });
             console.log(data);
         } catch (error) {
