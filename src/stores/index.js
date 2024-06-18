@@ -13,7 +13,7 @@ function setAuth() {
   const refresh = async () => {
     try {
       const authenticateUser = await postApi({ 
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/token/refresh' });
       set(authenticateUser);
       isRefresh.set(true);
@@ -26,7 +26,7 @@ function setAuth() {
   const refreshAccessToken = async () => {
     try {
       const authenticateUser = await postApi({ 
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/token/access' });
       updateUserInfo(authenticateUser);
     } catch (error) {
@@ -40,7 +40,7 @@ function setAuth() {
   const fetchUserInfo = async () => {
     try {
       const options = {
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/token/access',
       }
       const userInfo = await postApi(options);
@@ -55,7 +55,7 @@ function setAuth() {
   const login = async (email, password) => {
     try {
       const options = {
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/login/email',
         data: {
           email,
@@ -74,7 +74,7 @@ function setAuth() {
   const logout = async () => {
     try {
       const options = {
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/logout',
       }
       await postApi(options);
@@ -90,7 +90,7 @@ function setAuth() {
   const register = async (email, password, name) => {
     try {
       const options = {
-        baseURL:'http://localhost:3001',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/auth/register/email',
         data: {
           email,
@@ -151,14 +151,14 @@ function setTheme() {
   const getThemes = async () => {
     try {
       const options = {
-        baseURL:'http://localhost:3000',
+        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
         path: '/themes',
       }
       const serverTheme = await getApi(options);
       set(serverTheme);
         updateThemeInfo(serverTheme);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      console.log(`${error.response.data.message}`);
     }
   };
   return {
