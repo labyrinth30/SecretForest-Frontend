@@ -15,7 +15,7 @@
     const fetchData = async () => {
         try {
             const data = await getApi({
-                path: `/slots?date=${currentDate}&theme=${currentTheme}`,
+                path: `/slots?date=${currentDate}&themeId=${currentTheme}`,
             });
             console.log(data);
         } catch (error) {
@@ -38,8 +38,8 @@
 <ReservationFilter />
 <br />
 {#each themes as theme (theme.id)}
-    {#if currentTheme === "0" || theme.id === currentTheme}
+    
         <ReservationCard {theme} />
-    {/if}
+    
 {/each}
 <HomeFooter />

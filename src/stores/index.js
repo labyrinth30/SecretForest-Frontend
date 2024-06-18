@@ -13,7 +13,7 @@ function setAuth() {
   const refresh = async () => {
     try {
       const authenticateUser = await postApi({ 
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/token/refresh' });
       set(authenticateUser);
       isRefresh.set(true);
@@ -26,7 +26,7 @@ function setAuth() {
   const refreshAccessToken = async () => {
     try {
       const authenticateUser = await postApi({ 
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/token/access' });
       updateUserInfo(authenticateUser);
     } catch (error) {
@@ -40,7 +40,7 @@ function setAuth() {
   const fetchUserInfo = async () => {
     try {
       const options = {
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/token/access',
       }
       const userInfo = await postApi(options);
@@ -55,7 +55,7 @@ function setAuth() {
   const login = async (email, password) => {
     try {
       const options = {
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/login/email',
         data: {
           email,
@@ -74,7 +74,7 @@ function setAuth() {
   const logout = async () => {
     try {
       const options = {
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/logout',
       }
       await postApi(options);
@@ -90,7 +90,7 @@ function setAuth() {
   const register = async (email, password, name) => {
     try {
       const options = {
-        baseURL:'http://k8s-default-secretfo-f50dd79e90-1614778431.ap-northeast-2.elb.amazonaws.com',
+        baseURL:'http://localhost:3001',
         path: '/auth/register/email',
         data: {
           email,

@@ -9,7 +9,6 @@
     dispatch('close'); // 부모 컴포넌트에게 'close' 이벤트 전달
   }
   function goReservation() {
-    currentTheme.set(theme.id)
     router.goto('/reservation');
   }
 </script>
